@@ -79,7 +79,6 @@ type BlockObject struct {
 	GasLimit         string `json:"gasLimit"`
 	GasUsed          string `json:"gasUsed"`
 	Timestamp        string `json:"timestamp"`
-	//TODO: handle both full transactions and the hashes
 	Transactions []interface{} `json:"transactions"`
 	Uncles       []string      `json:"uncles"`
 }

@@ -8,17 +8,9 @@ import (
 	"strings"
 )
 
-var (
-	/*
-		C++: http://localhost:8545
-		Go: http://localhost:8545
-		Py: http://localhost:4000
-	*/
 
-	server = "localhost:8545"
-)
+var server = "localhost:8545"
 
-//https://github.com/ethereum/wiki/wiki/JSON-RPC
 
 func SetServer(newServer string) {
 	server = newServer

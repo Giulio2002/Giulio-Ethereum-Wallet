@@ -34,6 +34,7 @@ func EthSyncing() (*EthSyncingResponse, error) {
 		return nil, err
 	}
 	return answer, nil
+
 }
 
 func EthCoinbase() (string, error) {
@@ -107,7 +108,6 @@ func EthBlockNumber() (int64, error) {
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
 func EthGetBalance(address string, blockNumberOrTag string) (int64, error) {
 	resp, err := Call("eth_getBalance", []string{address, blockNumberOrTag})
 	if err != nil {
@@ -119,7 +119,6 @@ func EthGetBalance(address string, blockNumberOrTag string) (int64, error) {
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
 func EthGetStorageAt(address, positionInTheStorage, blockNumberOrTag string) (string, error) {
 	resp, err := Call("eth_getStorageAt", []string{address, positionInTheStorage, blockNumberOrTag})
 	if err != nil {
@@ -131,7 +130,6 @@ func EthGetStorageAt(address, positionInTheStorage, blockNumberOrTag string) (st
 	return resp.Result.(string), nil
 }
 
-//TODO: test
 func EthGetTransactionCount(address, blockNumberOrTag string) (int64, error) {
 	resp, err := Call("eth_getTransactionCount", []string{address, blockNumberOrTag})
 	if err != nil {
@@ -143,7 +141,6 @@ func EthGetTransactionCount(address, blockNumberOrTag string) (int64, error) {
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
 func EthGetBlockTransactionCountByHash(blockHash string) (int64, error) {
 	resp, err := Call("eth_getBlockTransactionCountByHash", []string{blockHash})
 	if err != nil {
@@ -155,7 +152,6 @@ func EthGetBlockTransactionCountByHash(blockHash string) (int64, error) {
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
 func EthGetBlockTransactionCountByNumber(blockNumberOrTag string) (int64, error) {
 	resp, err := Call("eth_getBlockTransactionCountByNumber", []string{blockNumberOrTag})
 	if err != nil {
@@ -167,7 +163,6 @@ func EthGetBlockTransactionCountByNumber(blockNumberOrTag string) (int64, error)
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
 func EthGetUncleCountByBlockHash(blockHash string) (int64, error) {
 	resp, err := Call("eth_getUncleCountByBlockHash", []string{blockHash})
 	if err != nil {
@@ -179,7 +174,6 @@ func EthGetUncleCountByBlockHash(blockHash string) (int64, error) {
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
 func EthGetUncleCountByBlockNumber(blockNumberOrTag string) (int64, error) {
 	resp, err := Call("eth_getUncleCountByBlockNumber", []string{blockNumberOrTag})
 	if err != nil {
@@ -191,7 +185,6 @@ func EthGetUncleCountByBlockNumber(blockNumberOrTag string) (int64, error) {
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
 func EthGetCode(address, blockNumberOrTag string) (string, error) {
 	resp, err := Call("eth_getCode", []string{address, blockNumberOrTag})
 	if err != nil {
@@ -203,7 +196,6 @@ func EthGetCode(address, blockNumberOrTag string) (string, error) {
 	return resp.Result.(string), nil
 }
 
-//TODO: test
 func EthSign(address, hashOfDataToSign string) (string, error) {
 	resp, err := Call("eth_sign", []string{address, hashOfDataToSign})
 	if err != nil {
@@ -215,7 +207,6 @@ func EthSign(address, hashOfDataToSign string) (string, error) {
 	return resp.Result.(string), nil
 }
 
-//TODO: test
 func EthSendTransaction(tx *TransactionObject) (string, error) {
 	resp, err := Call("eth_sendTransaction", []interface{}{tx})
 	if err != nil {
@@ -227,7 +218,6 @@ func EthSendTransaction(tx *TransactionObject) (string, error) {
 	return resp.Result.(string), nil
 }
 
-//TODO: test
 func EthSendRawTransaction(txData string) (string, error) {
 	resp, err := Call("eth_sendRawTransaction", []string{txData})
 	if err != nil {
@@ -239,7 +229,6 @@ func EthSendRawTransaction(txData string) (string, error) {
 	return resp.Result.(string), nil
 }
 
-//TODO: test
 func EthCall(tx *TransactionObject, blockNumberOrTag string) (string, error) {
 	resp, err := Call("eth_call", []interface{}{tx, blockNumberOrTag})
 	if err != nil {
@@ -251,7 +240,7 @@ func EthCall(tx *TransactionObject, blockNumberOrTag string) (string, error) {
 	return resp.Result.(string), nil
 }
 
-//TODO: test
+
 func EthEstimateGas(tx *TransactionObject, blockNumberOrTag string) (int64, error) {
 	resp, err := Call("eth_estimateGas", []interface{}{tx, blockNumberOrTag})
 	if err != nil {
@@ -263,7 +252,7 @@ func EthEstimateGas(tx *TransactionObject, blockNumberOrTag string) (int64, erro
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
+
 func EthGetBlockByHash(blockHash string, fullTransaction bool) (*BlockObject, error) {
 	resp, err := Call("eth_getBlockByHash", []interface{}{blockHash, fullTransaction})
 	if err != nil {
@@ -280,7 +269,7 @@ func EthGetBlockByHash(blockHash string, fullTransaction bool) (*BlockObject, er
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetBlockByNumber(blockNumberOrTag string, fullTransaction bool) (*BlockObject, error) {
 	resp, err := Call("eth_getBlockByNumber", []interface{}{blockNumberOrTag, fullTransaction})
 	if err != nil {
@@ -297,7 +286,7 @@ func EthGetBlockByNumber(blockNumberOrTag string, fullTransaction bool) (*BlockO
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetTransactionByHash(txHash string) (*TransactionObject, error) {
 	resp, err := Call("eth_getTransactionByHash", []interface{}{txHash})
 	if err != nil {
@@ -314,7 +303,7 @@ func EthGetTransactionByHash(txHash string) (*TransactionObject, error) {
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetTransactionByBlockHashAndIndex(blockHash, txIndex string) (*TransactionObject, error) {
 	resp, err := Call("eth_getTransactionByBlockHashAndIndex", []interface{}{blockHash, txIndex})
 	if err != nil {
@@ -331,7 +320,7 @@ func EthGetTransactionByBlockHashAndIndex(blockHash, txIndex string) (*Transacti
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetTransactionByBlockNumberAndIndex(blockNumberOrTag string, txIndex string) (*TransactionObject, error) {
 	resp, err := Call("eth_getTransactionByBlockNumberAndIndex", []interface{}{blockNumberOrTag, txIndex})
 	if err != nil {
@@ -348,7 +337,7 @@ func EthGetTransactionByBlockNumberAndIndex(blockNumberOrTag string, txIndex str
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetTransactionReceipt(txHash string) (*TransactionReceipt, error) {
 	resp, err := Call("eth_getTransactionReceipt", []interface{}{txHash})
 	if err != nil {
@@ -365,7 +354,7 @@ func EthGetTransactionReceipt(txHash string) (*TransactionReceipt, error) {
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetUncleByBlockHashAndIndex(blockHash, uncleIndex string) (*BlockObject, error) {
 	resp, err := Call("eth_getUncleByBlockHashAndIndex", []interface{}{blockHash, uncleIndex})
 	if err != nil {
@@ -382,7 +371,7 @@ func EthGetUncleByBlockHashAndIndex(blockHash, uncleIndex string) (*BlockObject,
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetUncleByBlockNumberAndIndex(blockNumberOrTag string, uncleIndex string) (*BlockObject, error) {
 	resp, err := Call("eth_getUncleByBlockNumberAndIndex", []interface{}{blockNumberOrTag, uncleIndex})
 	if err != nil {
@@ -410,7 +399,7 @@ func EthGetCompilers() ([]string, error) {
 	return resp.Result.([]string), nil
 }
 
-//TODO: test
+
 func EthCompileLLL(sourceCode string) (string, error) {
 	resp, err := Call("eth_compileLLL", []interface{}{sourceCode})
 	if err != nil {
@@ -422,7 +411,7 @@ func EthCompileLLL(sourceCode string) (string, error) {
 	return resp.Result.(string), nil
 }
 
-//TODO: test
+
 func EthCompileSolidity(sourceCode string) (string, error) {
 	resp, err := Call("eth_compileSolidity", []interface{}{sourceCode})
 	if err != nil {
@@ -434,7 +423,7 @@ func EthCompileSolidity(sourceCode string) (string, error) {
 	return resp.Result.(string), nil
 }
 
-//TODO: test
+
 func EthCompileSerpent(sourceCode string) (string, error) {
 	resp, err := Call("eth_compileSerpent", []interface{}{sourceCode})
 	if err != nil {
@@ -446,7 +435,7 @@ func EthCompileSerpent(sourceCode string) (string, error) {
 	return resp.Result.(string), nil
 }
 
-//TODO: test
+
 func EthNewFilter(filterOptions *FilterOptions) (int64, error) {
 	resp, err := Call("eth_newFilter", []interface{}{filterOptions})
 	if err != nil {
@@ -458,7 +447,7 @@ func EthNewFilter(filterOptions *FilterOptions) (int64, error) {
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
+
 func EthNewBlockFilter() (int64, error) {
 	resp, err := Call("eth_newBlockFilter", nil)
 	if err != nil {
@@ -470,7 +459,7 @@ func EthNewBlockFilter() (int64, error) {
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
+
 func EthNewPendingTransactionFilter() (int64, error) {
 	resp, err := Call("eth_newPendingTransactionFilter", nil)
 	if err != nil {
@@ -482,7 +471,7 @@ func EthNewPendingTransactionFilter() (int64, error) {
 	return ParseQuantity(resp.Result.(string))
 }
 
-//TODO: test
+
 func EthUninstallFilter(filterID string) (bool, error) {
 	resp, err := Call("eth_uninstallFilter", []interface{}{filterID})
 	if err != nil {
@@ -494,7 +483,7 @@ func EthUninstallFilter(filterID string) (bool, error) {
 	return resp.Result.(bool), nil
 }
 
-//TODO: test
+
 func EthGetFilterChanges(filterID string) (*LogObject, error) {
 	resp, err := Call("eth_getFilterChanges", []interface{}{filterID})
 	if err != nil {
@@ -511,7 +500,7 @@ func EthGetFilterChanges(filterID string) (*LogObject, error) {
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetFilterLogs(filterID string) (*LogObject, error) {
 	resp, err := Call("eth_getFilterLogs", nil)
 	if err != nil {
@@ -528,7 +517,7 @@ func EthGetFilterLogs(filterID string) (*LogObject, error) {
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetLogs(filter []*FilterOptions) (*LogObject, error) {
 	resp, err := Call("eth_getLogs", filter)
 	if err != nil {
@@ -545,7 +534,7 @@ func EthGetLogs(filter []*FilterOptions) (*LogObject, error) {
 	return answer, nil
 }
 
-//TODO: test
+
 func EthGetWork() ([]string, error) {
 	resp, err := Call("eth_getWork", nil)
 	if err != nil {
@@ -562,7 +551,7 @@ func EthGetWork() ([]string, error) {
 	return answer, nil
 }
 
-//TODO: test
+
 func EthSubmitWork(work []string) (bool, error) {
 	resp, err := Call("eth_submitWork", work)
 	if err != nil {
@@ -574,7 +563,7 @@ func EthSubmitWork(work []string) (bool, error) {
 	return resp.Result.(bool), nil
 }
 
-//TODO: test
+
 func EthSubmitHashrate(hashrate []string) (bool, error) {
 	resp, err := Call("eth_submitHashrate", hashrate)
 	if err != nil {

@@ -1,7 +1,3 @@
-// Copyright 2016 Factom Foundation
-// Use of this source code is governed by the MIT
-// license that can be found in the LICENSE file.
-
 package main
 
 import (
@@ -11,7 +7,6 @@ import (
 	"github.com/tonnerre/golang-go.crypto/sha3"
 )
 
-//https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI
 
 func IntToQuantity(i int64) string {
 	return "0x" + IntToQuantityWithoutPrefix(i)
@@ -37,14 +32,12 @@ func IntToQuantityWithoutPrefix(i int64) string {
 }
 
 func QuantityToInt(q string) (int64, error) {
-	//Remove "0x" if it exists
 	if len(q) > 1 {
 		if q[0] == '0' && q[1] == 'x' {
 			q = q[2:]
 		}
 	}
 
-	//Making sure the bytes are of even length
 	if len(q)%2 == 1 {
 		q = "0" + q
 	}
@@ -76,7 +69,6 @@ func HexToPaddedDataWithoutPrefix(b []byte) string {
 }
 
 func DataToHex(data string) ([]byte, error) {
-	//Remove "0x" if it exists
 	if len(data) > 1 {
 		if data[0] == '0' && data[1] == 'x' {
 			data = data[2:]

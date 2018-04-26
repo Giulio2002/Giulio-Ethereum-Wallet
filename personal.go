@@ -26,7 +26,7 @@ func PersonalListAccounts() (interface{}, error) {
 	return resp.Result, nil
 }
 
-//TODO: finish
+
 func PersonalLockAccount(address string) (interface{}, error) {
 	resp, err := Call("personal_lockAccount", []interface{}{address})
 	if err != nil {
@@ -38,7 +38,7 @@ func PersonalLockAccount(address string) (interface{}, error) {
 	return resp.Result, nil
 }
 
-//TODO: finish
+
 func PersonalNewAccount(passphrase string) (string) {
 	resp, err := Call("personal_newAccount", []interface{}{passphrase})
 	if err != nil {
@@ -50,7 +50,7 @@ func PersonalNewAccount(passphrase string) (string) {
 	return resp.Result.(string)
 }
 
-//TODO: finish
+
 func PersonalUnlockAccount(address, passphrase string, duration int64) (interface{}, error) {
 	resp, err := Call("personal_unlockAccount", []interface{}{address, passphrase, duration})
 	if err != nil {
@@ -62,7 +62,7 @@ func PersonalUnlockAccount(address, passphrase string, duration int64) (interfac
 	return resp.Result, nil
 }
 
-//TODO: finish
+
 func PersonalSendTransaction(tx *TransactionObject, passphrase string) (string, error) {
 	resp, err := Call("personal_sendTransaction", []interface{}{tx, passphrase})
 	if err != nil {
