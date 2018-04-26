@@ -1,4 +1,4 @@
-package EthImagePwd
+package main
 
 import (
 	"bytes"

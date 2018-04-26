@@ -1,4 +1,4 @@
-package EthImagePwd
+package main
 
 import (
 	"fmt"
@@ -39,15 +39,15 @@ func PersonalLockAccount(address string) (interface{}, error) {
 }
 
 //TODO: finish
-func PersonalNewAccount(passphrase string) (interface{}, error) {
+func PersonalNewAccount(passphrase string) (string) {
 	resp, err := Call("personal_newAccount", []interface{}{passphrase})
 	if err != nil {
-		return nil, err
+		return "0x0";
 	}
 	if resp.Error != nil {
-		return nil, fmt.Errorf(resp.Error.Message)
+		return "0x0";
 	}
-	return resp.Result, nil
+	return resp.Result.(string)
 }
 
 //TODO: finish

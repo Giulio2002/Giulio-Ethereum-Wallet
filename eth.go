@@ -1,10 +1,8 @@
-package EthImagePwd
+package main
 
 import (
 	"fmt"
 )
-
-//https://github.com/ethereum/wiki/wiki/JSON-RPC
 
 func EthProtocolVersion() (string, error) {
 	resp, err := Call("eth_protocolVersion", nil)
