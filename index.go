@@ -16,7 +16,7 @@ func index(){
 		box := ui.NewVerticalBox();
 		box.Append(txButton,false);
 		box.Append(personalButton,false);
-		window := ui.NewWindow("Rebuffo Wallet", 200, 100,false);
+		window := ui.NewWindow("Giulio Wallet", 200, 100,false);
 		window.SetMargined(true);
 		window.SetChild(box);
 		window.OnClosing(func(*ui.Window) bool {
@@ -63,7 +63,7 @@ func txPage(){
 		box.Append(info4,false);
 		box.Append(password,false);
 		box.Append(commitButton,false);
-		window := ui.NewWindow("Rebuffo Wallet", 500, 100,false);
+		window := ui.NewWindow("Giulio Wallet", 500, 100,false);
 		window.SetMargined(true);
 		window.SetChild(box);
 		window.OnClosing(func(*ui.Window) bool {
@@ -115,7 +115,7 @@ func personalPage(){
 		box.Append(password,false);
 		box.Append(commitButton,false);
 		box.Append(created,false);
-		window := ui.NewWindow("Rebuffo Wallet", 500, 100,false);
+		window := ui.NewWindow("Giulio Wallet", 500, 100,false);
 		window.SetMargined(true);
 		window.SetChild(box);
 		window.OnClosing(func(*ui.Window) bool {
