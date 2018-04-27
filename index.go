@@ -6,7 +6,6 @@ import (
 	"io"
 	"os"
 	"fmt"
-	"log"
 )
 
 func index(){
@@ -73,14 +72,16 @@ func txPage(){
 		commitButton.OnClicked(func(*ui.Button){
 			hasher := sha256.New();
 			file,err := os.Open(password.Text());
-			if err != nil && password.Text() != ""{
-				log.Fatal(err)
+			if err != nil {
+				PersonalUnlockAccount(from.Text(),password.Text(),50);
+			}else{
+				defer file.Close();
+				io.Copy(hasher,file);
+				sum := string(hasher.Sum(nil))
+				fmt.Println(sum);
+				PersonalUnlockAccount(from.Text(),sum,50);
 			}
-			defer file.Close();
-			io.Copy(hasher,file);
-			sum := string(hasher.Sum(nil))
-			fmt.Println(sum);
-			PersonalUnlockAccount(from.Text(),sum,50);
+
 			tx := TransactionObject{};
 			tx.From = from.Text();
 			tx.To = to.Text();
@@ -127,7 +128,8 @@ func personalPage(){
 			hasher := sha256.New();
 			file,err := os.Open(password.Text());
 			if err != nil{
-				log.Fatal(err)
+				created.SetText("cannot create address.File not found");
+				return;
 			}
 			defer file.Close();
 			io.Copy(hasher,file);
